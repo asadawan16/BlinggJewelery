@@ -52,7 +52,7 @@ const authenticate = (req, res, next) => {
   }
 };
 app.get("/", (req, res) => {
-  res.send("Server is running");
+  res.redirect("https://blingg-jewelery-frontend.vercel.app");
 });
 
 app.get("/products", async (req, res) => {
