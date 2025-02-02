@@ -1,0 +1,192 @@
+.signup-container , .login-container {
+    background-color: #faf5f0;}
+.login-container {
+    height: 100vh;
+}
+.signup-container{
+    height: 150vh !important; 
+}
+
+.auth-form {
+    margin: 0 auto;
+    display: flex;
+    width: 540px;
+    padding: 40px;
+    animation: bounce-in 0.6s ease-out forwards;
+    flex-direction: column;
+}
+.login-container  h1 , .signup-container h1 {
+    margin-bottom: 10px;
+    /* color:  #262626; */
+    color: #a86e3b;
+    text-align: center;
+    font-family: 'Cinzel';
+    font-size: 38px;
+    font-weight: 600;
+    line-height: normal;
+}
+.login-container  span , .signup-container span {
+    margin:10px auto 40px;
+    display: block;
+    max-width: 500px;
+    /* color: #4C4C4D; */
+    color: #a86e3b;
+    text-align: center;
+    font-family: 'Cinzel';
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+}
+.login-container label , .signup-container label {
+    margin-bottom: 10px;
+    /* color:  #262626; */
+    color: #a86e3b;
+    font-family: 'Cinzel';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px; 
+}
+.login-container input , .signup-container input {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px ;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #FCFCFD;
+    color:  #656567;
+    font-family: 'Roboto';
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    border: none;
+
+}
+.login-container .submitbtn ,.signup-container .submitbtn {
+    width: 100%;
+    color:  #fff;
+    text-align: center;
+    font-family: 'Cinzel';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px ;
+    padding: 14px 20px;
+    border-radius: 8px;
+    background-color: #a86e3be8;
+    border: 1px solid #fff;
+}
+.submitbtn:hover {
+    cursor: pointer;
+    background-color: #a86e3b;
+    border: 1px solid #FCFCFD;
+    transition: all 0.3s ease-in-out;
+    color: #fff;
+}
+.login-container form  .redirect ,.signup-container form  .redirect {
+    /* color:  #262626; */
+    color: #a86e3b;
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 16px;
+    line-height: 24px; 
+    font-weight: 400;
+}
+.login-link , .guest-link{
+    position: relative;
+    margin:0 10px;
+    color:  #262626;
+    font-family: 'Cinzel';
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+.choice {
+    margin: 24px 15px!important;
+    position: relative;
+    color: #E4E4E7;
+}
+.choice::after {
+    content: "";
+    position: absolute;
+    right: 0%;
+    bottom: 50%;
+    width: 45%;
+    height: 1px;
+    background-color: #E4E4E7;
+}
+.choice::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    bottom: 50%;
+    width: 45%;
+    height: 1px;
+    background-color: #E4E4E7;
+}
+.login-arrow-icon {
+    position: absolute;
+    top: 18%;
+    left: 45px;
+    font-size: 18px;
+}
+.signup-arrow-icon {
+    position: absolute;
+    top: 18%;
+    left: 60px;
+    font-size: 18px;
+}
+/* login css */
+.forgotpassword {
+    margin-bottom: 20px;
+    text-align: end;
+    color:  #4C4C4D;
+    font-family: "Cinzel";
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+#rememberme {
+    display: inline-block;
+    width: 10%;
+    height: 20px;
+    background-color: #DEDEDE;
+}
+.remember-me { 
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.remember-me span {
+    position: absolute;
+    left: 10%;
+    top: -10px;
+}
+.password {
+     position: relative;
+}
+.password .eye-icon {
+    position: absolute;
+    font-size: 24px;
+    right: 3%;
+    top: 15%;
+    color : #4C4C4D;
+    cursor: pointer;
+}
+#showerror {
+    visibility: visible;
+}
+#hide {
+    visibility: hidden;
+}
+.password-error {
+    display: inline-block;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+    text-wrap: balance;
+    color: red !important;
+    font-family: 'Roboto';
+    font-weight: 400;
+    margin: 0 0  10px 10px;
+}

@@ -1,0 +1,154 @@
+import React, { useEffect, useState } from "react";
+import "./add-products.css";
+import { useDispatch, useSelector } from "react-redux";
+import { updateProducts } from "../../Store/product-actions";
+import Products from "../products/products";
+import { productActions } from "../../Store/product-slice";
+const UpdateProducts = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(productActions.setToggle(true));
+  }, [dispatch]);
+  const [productname, setProductname] = useState("");
+  const [productprice, setProductprice] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(""); // Store image URL
+
+  const id = useSelector((state) => state.product.SelectedProduct);
+  const showUpdateForm = useSelector((state) => state.product.showUpdateForm);
+  const products = useSelector((state) => state.product.products);
+  console.log(id);
+
+  useEffect(() => {
+    if (id) {
+      const product = products.find((p) => p._id === id);
+      if (product) {
+        setProductname(product.productname);
+        setProductprice(product.productprice);
+        setCategory(product.category);
+        setDescription(product.description);
+        setImagePreview(`http://localhost:3001/${product.imagepath}`); // Set fetched image
+      }
+    }
+  }, [id]);
+  // const handleFileChange = (e) => {
+  //   setImage(e.target.files[0]);
+  // };
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      setImagePreview(URL.createObjectURL(file)); // Preview new image
+    }
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const productData = new FormData();
+    productData.append("productname", productname || "");
+    productData.append("productprice", productprice || "");
+    productData.append("category", category || "");
+    productData.append("description", description || "");
+
+    if (image) {
+      productData.append("image", image);
+    }
+
+    try {
+      await dispatch(updateProducts(id, productData));
+      alert("✅ Product updated successfully!");
+      dispatch(productActions.setSelectedProduct(null));
+      dispatch(productActions.setShowUpdateForm(false));
+    } catch (error) {
+      alert("❌ Failed to update product. Please try again!");
+      console.error("Update failed:", error);
+    }
+  };
+
+  return (
+    <>
+      {!showUpdateForm ? (
+        <Products hide={true} />
+      ) : (
+        <div className="update-products-form">
+          <form onSubmit={handleSubmit} className="add-products-form">
+            <div className="container">
+              <h1>Update Products</h1>
+
+              <input
+                type="text"
+                name="productname"
+                placeholder="Product Name"
+                value={productname}
+                onChange={(e) => setProductname(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                name="productprice"
+                placeholder="Product Price"
+                value={productprice}
+                onChange={(e) => setProductprice(e.target.value)}
+                required
+              />
+              <select
+                name="category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                required
+              >
+                <option value="">All Products</option>
+                <option value="Rings">Rings</option>
+                <option value="Bracelets">Bracelete</option>
+                <option value="Necklace">Necklace</option>
+                <option value="Earrings">Earrings</option>
+                <option value="trending">trending</option>
+                <option value="bestselling">bestselling</option>
+              </select>
+              <input
+                type="text"
+                name="description"
+                placeholder="Product Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              />
+              {imagePreview && (
+                <img
+                  src={imagePreview}
+                  alt="Selected Product"
+                  style={{
+                    width: "150px",
+                    height: "150px",
+                    objectFit: "cover",
+                  }}
+                />
+              )}
+              <input
+                type="file"
+                name="image"
+                onChange={handleFileChange}
+                accept="image/*"
+                required
+              />
+              <button type="submit">Update Product</button>
+              <button
+                type="clear"
+                onClick={() => {
+                  dispatch(productActions.setSelectedProduct(null));
+                  dispatch(productActions.setShowUpdateForm(false));
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default UpdateProducts;

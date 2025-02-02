@@ -1,0 +1,71 @@
+.add-products-form  , .update-products-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #faf5f0;
+    margin: 0;
+}
+.add-products-form  h1 ,.update-products-form h1 {
+    font-family: 'Cinzel';
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 52px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #a86e3b;
+}
+.add-products-form form input , .update-products-form form input {
+    width: 100%;
+    display: block;
+    height: 40px;
+    font-size: 16px;
+    font-family: 'Cinzel';
+    font-weight: 600;
+    margin-bottom: 10px;
+    border: 1px solid #a86e3b;
+    border-radius: 5px;
+    padding: 0 10px;    
+}
+.add-products-form form input[type="file"] , .update-products-form form input[type="file"] {
+    border: none;
+    font-size: 18px;
+    font-family: 'Cinzel';
+    width: 105%;
+    font-weight: 600;
+    padding: 0;
+}
+.add-products-form form button , .update-products-form form button {
+    width: 105%;
+    margin: 10px 0;
+    background-color: #faf5f0;
+    padding: 10px 30px;
+    color: #a86e3b;
+    border: 1px solid #a86e3b !important;
+    border-radius: 40px;
+    font-size: 20px;
+    font-family: 'Cinzel';
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+.add-products-form form button:hover ,.update-products-form form button:hover {
+    background-color: #a86e3b;
+    color: #faf5f0;
+    transition: all 0.3s ease-in-out;
+}
+.add-products-form form select , .update-products-form form select {
+    width: 105%;
+    display: block;
+    height: 40px;
+    font-size: 16px;
+    font-family: 'Cinzel';
+    color: #a86e3b;
+    font-weight: 600;
+    margin-bottom: 10px;
+    border: 1px solid #a86e3b;
+    border-radius: 5px;
+    padding: 0 10px;
+}

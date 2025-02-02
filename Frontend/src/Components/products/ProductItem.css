@@ -1,0 +1,42 @@
+
+.product {
+    max-width: 250px; 
+    position: relative;  
+}
+.product:hover {
+    transform: scale(1.01);
+    transition: all 0.6ms ease-in-out;
+}
+.product:hover .product-image{
+    opacity: 0.8;
+}
+.product:hover .add-to-cart-button {
+    display: block;
+}
+.product .add-to-cart-button {
+    display: none;
+    position: absolute;
+    border: none;
+    top: 35%;
+    left: 20%;
+    background-color: #a86e3b;
+    padding: 10px 30px;
+    font-family: 'Cinzel' !important;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+}
+.product .product-image  img {
+    width: 100%;
+}
+.product h3 {
+    margin: 10px auto !important;
+    display: inline-block;
+    max-width: 185px;
+    color: #000 !important;
+    font-family: 'Cinzel' !important;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 400;
+}

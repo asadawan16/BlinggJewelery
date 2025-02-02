@@ -1,0 +1,27 @@
+.trending {
+    margin: 140px;
+}
+.products-grid {
+    margin-bottom: 100px;
+    display: flex;
+    row-gap: 30px;
+    column-gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.trending span {
+    margin-bottom: 5px !important;
+    display: block !important;
+    text-align: center;
+    font-family: 'Roboto';
+    font-weight: 400;
+    color: #808285;
+}
+.trending h2 {
+    margin-bottom: 50px;
+    font-size: 45px;
+    line-height: 49px;
+    font-family: 'Cinzel';
+    font-weight: 400;
+    text-align: center;
+}

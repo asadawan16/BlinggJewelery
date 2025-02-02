@@ -1,0 +1,37 @@
+.welcome {
+    display: flex;
+    background: #e2cab2;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.welcome img {
+    width: 10%;
+}
+.welcome h1 {
+
+    /* color: #fff; */
+    color: #a86e3b;
+
+}
+.welcome .options {
+    display: flex;
+    column-gap: 50px;
+}
+.options a {
+    display: block;
+    padding: 15px 30px;
+    border-radius: 14px;
+    background-color: #f5f5dc;
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Cinzel';
+}
+.options a:hover {
+    background-color: #a86e3b;
+    color: #fff;
+    transition: all 0.4s ease-in-out;
+}

@@ -1,0 +1,73 @@
+#placeorder {
+ margin:  50px auto;
+}
+ th {
+     font-family: 'Cinzel';
+    font-weight: 600 !important;
+}
+.order td ,th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.096);
+    width: 40%;
+    padding:10px 15px;
+    font-size: 22px;
+    line-height: 24px;
+    font-family: 'Cinzel';
+    font-weight: 400;
+    text-align:left ;
+}
+#placeorder h3 {
+    margin: 50px 0 5px;
+    font-family: 'Cinzel';
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 49px;
+    text-align: left;
+}
+#placeorder h2 {
+    margin: 20px 0 5px;
+    font-family: 'Cinzel';
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 49px;
+    text-align: left;
+    
+}
+#placeorder input {
+    border: 1px solid rgba(0, 0, 0, 0.096) !important;
+    font-size: 16px;
+    font-family: 'Cinzel';
+    width: 100%;
+    font-weight: 400;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 15px 10px;
+}
+
+#placeorder textarea {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.096) !important;
+    font-size: 16px;
+    font-family: 'Cinzel';
+    font-weight: 400;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 15px 10px;
+}
+#placeorder .checkoutbtn {
+    width: 60%;
+    margin: 10px auto !important;
+    display: block;
+    font-size: 28px;
+    font-family: 'Cinzel';
+    font-weight: 400;
+    text-align: center;
+    padding: 20px 40px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #a86e3b;
+    line-height: 23px;
+}
+#placeorder .checkoutbtn:hover {
+    background-color: #000;
+    transition: all 0.4ms ease-in-out;
+}

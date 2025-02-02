@@ -1,0 +1,84 @@
+.products {
+    border-top: 1px solid rgba(0, 0, 0, 0.096);
+}
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.products .container h2 {
+    margin: 50px 0 5px;
+    font-size: 35px;
+    line-height: 49px;
+    font-family: 'Cinzel';
+    font-weight: 400;
+    text-align: center;
+}
+.search-grid {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+    margin-bottom: 50px;
+}
+.search-grid input {
+
+    width: 300px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500 !important;
+    color: #000 !important;
+    font-family: 'Cinzel';
+    border: 1px solid rgba(0, 0, 0, 0.096);
+    padding: 0 20px;
+}
+.search-grid select {
+
+    width: 300px;
+    height: 50px;
+    border-radius: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.096);
+    padding: 0 20px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    font-family: "Cinzel";
+}
+.search-grid select option {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    font-family: "Cinzel";
+}
+.grid {
+    row-gap: 50px;
+}
+.product span {
+    display: block;
+    text-align: left;
+    font-family: 'Roboto';
+    font-weight: 400;
+    color: #808285;
+}
+.addedtocart-quantity {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    background-color: #a86e3b;
+    color: #fff !important;
+    font-family: 'Roboto';
+    z-index: 1;
+    font-size: 10px;
+    padding: 5px;
+    clip-path: circle();   
+}
+.product-cart-icon {
+    right: 30px;
+    position: absolute;
+    top: 6px;
+    font-family: 'Roboto';
+    z-index: 1;
+    color: #a86e3b;
+    font-size: 18px;   
+}

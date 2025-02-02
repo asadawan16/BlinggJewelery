@@ -1,0 +1,30 @@
+#manage-product-button{
+    position: relative ;
+    display: flex  !important;
+    justify-content: space-between;
+    column-gap: 10px;
+    display: block ;
+    margin: 20px 0;
+}
+
+#update-button,   #remove-button{
+    border: none;
+    text-align: center;
+    display: block ;
+    background-color: #faf5f0;
+    padding: 10px 15px;
+    width: 40%;
+    font-family: 'Cinzel' ;
+    border-radius: 40px;
+    border: 1px solid #a86e3bf1;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #a86e3b;
+}
+#update-button:hover , #remove-button:hover{
+    background-color: #a86e3b;
+    border: 2px solid #faf5f0;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}

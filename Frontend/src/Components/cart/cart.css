@@ -1,0 +1,133 @@
+.cart {
+    border-top: 1px solid rgba(0, 0, 0, 0.096);
+    padding-bottom: 50px;
+    /* background-color: #faf5f0; */
+    background-color: #fff;
+    min-height: 100vh; 
+}
+.cart .container {
+    width: 1260px;
+    margin: 0 auto;
+}
+.cart h2 {
+    margin: 50px 0 20px;
+    font-size: 45px;
+    line-height: 52px;
+    font-family: 'Cinzel';
+    font-weight: 400;
+    text-align: center;
+}
+.cart h3 {
+    margin: 50px 0 5px;
+    font-size: 35px;
+    line-height: 49px;
+    font-family: 'Cinzel';
+    font-weight: 400;
+    text-align: center;
+}
+.cart h4 {
+    font-family: 'Cinzel';
+    font-weight: 400; 
+    font-size: 24px;    
+    width: 30%;
+    line-height: 24px;
+    color: #808285;
+}
+#cart-header {
+    background-color: #faf5f0;
+
+}
+#cart-header  span ,#cart-header h4 {
+    font-weight: 500;
+    font-size: 24px;
+    font-family: 'Cinzel';
+    line-height: 30px;
+    color: #a86e3b;
+}
+.cart-item {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.096);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.096); */
+    padding: 20px 0;
+
+}
+.cart a {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Cinzel';
+    font-weight: 400;
+    color: #fff;
+    padding: 10px 20px;
+    width: 30%;
+    background-color: #a86e3b;
+
+}
+.quantity{
+    display: flex;
+    column-gap: 20px;   
+    align-items: center;    
+
+}
+.cart a:hover {
+    background-color: #7d5a2f;
+    transition: all 0.5s ;
+}
+
+.cart-item span {
+    font-size: 20px;
+    font-family: 'Cinzel';
+    font-weight: 400;   
+    color: #808285;
+}
+.cart-item button {
+    padding: 5px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.096);
+border-radius: 4px;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: transparent;
+}
+.cart-item button:hover {
+    background-color: #a86e3b;
+    color: #fff;
+    transition: all 0.3s ease-in-out ;
+}
+.cart-item input[type=number] {
+    width: 100px;
+    padding: 10px 20px;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Cinzel';
+    border-radius: 4px;
+    font-weight: 400;
+    border: 1px solid rgba(0, 0, 0, 0.096);
+    padding: 0 10px;
+}
+
+.backtoproducts  {
+    position: absolute;
+    top: 0;
+    padding: 20px 40px !important;
+    width: 10% !important;
+    font-family: 'Cinzel';
+    font-weight: 400;
+    font-size: 22px;
+    background-color: #a86e3b;
+    color: #fff;
+    text-align: center;
+    line-height: 24px;
+}
+.back-arrow {
+    position: absolute;
+    left: 25%;
+    color: #fff;
+    font-size: 24px;
+}
+.backtoproducts:hover {
+    opacity: 0.9;
+}

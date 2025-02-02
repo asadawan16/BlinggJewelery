@@ -1,0 +1,17 @@
+{
+  "name": "blingg-jewelery-project",
+  "version": "1.0.0",
+  "main": "index.js",
+ "scripts": {
+  "client": "cd Frontend && yarn dev",
+  "server": "cd Server && npm start",
+  "dev": "concurrently \"npm run server\" \"npm run client\""
+}
+,
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
