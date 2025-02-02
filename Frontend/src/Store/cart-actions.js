@@ -1,11 +1,10 @@
-import axios from "axios";
 import { cartActions } from "./cart-slice";
-// Fetch Cart Data
+import API from "../axiosInstance";
 export const fetchCartData = () => {
   return async (dispatch) => {
     try {
       const token = sessionStorage.getItem("jwtToken");
-      const response = await axios.get("http://localhost:5000/cart", {
+      const response = await API.get("/cart", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -31,8 +30,8 @@ export const sendCartData = (cart) => {
     try {
       const token = sessionStorage.getItem("jwtToken");
 
-      await axios.put(
-        "http://localhost:5000/addtocart",
+      await API.put(
+        "/addtocart",
         {
           items: cart.items,
           totalQuantity: cart.totalQuantity,
@@ -54,7 +53,7 @@ export const clearCart = () => {
   return async (dispatch) => {
     try {
       const token = sessionStorage.getItem("jwtToken");
-      const response = await axios.delete("http://localhost:5000/clearcart", {
+      const response = await API.delete("/clearcart", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

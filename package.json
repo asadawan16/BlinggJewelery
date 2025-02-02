@@ -5,7 +5,7 @@
  "scripts": {
   "client": "cd Frontend && yarn dev",
   "server": "cd Server && npm start",
-  "dev": "concurrently \"npm run server\" \"npm run client\""
+  "dev": "concurrently \"yarn --cwd Frontend start\" \"npm --prefix Server start\""
 }
 ,
   "author": "",

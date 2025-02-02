@@ -1,7 +1,7 @@
 import React from "react";
 import "../Login/Login-signup.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import API from "../../axiosInstance";
 import { useState } from "react";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
@@ -39,8 +39,7 @@ const Signup = () => {
       password,
     };
 
-    axios
-      .post("http://localhost:5000/signup", UserData)
+    API.post("/signup", UserData)
       .then((result) => {
         console.log(result);
         setFirstName("");

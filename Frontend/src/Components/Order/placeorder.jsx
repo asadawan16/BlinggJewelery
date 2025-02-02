@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import "../Order/placeorder.css";
 import { useState } from "react";
-import axios from "axios";
+import API from "../../axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../Store/cart-slice";
@@ -43,13 +43,9 @@ const PlaceOrder = () => {
     };
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/placeorder",
-        orderData,
-        {
-          headers: token ? { Authorization: `Bearer ${token}` } : {},
-        }
-      );
+      const response = await API.post("/placeorder", orderData, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
 
       console.log("Order placed successfully:", response.data);
       dispatch(clearCart());

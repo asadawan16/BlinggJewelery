@@ -1,9 +1,9 @@
 import { orderActions } from "./Order-Slice";
-import axios from "axios";
+import API from "../axiosInstance";
 export const fetchOrderData = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:5000/all-orders", {
+      const response = await API.get("/all-orders", {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
         },

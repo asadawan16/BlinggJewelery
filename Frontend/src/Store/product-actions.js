@@ -1,10 +1,9 @@
-import axios from "axios";
 import { productActions } from "./product-slice";
-
+import API from "../axiosInstance";
 export const fetchProducts = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:5000/products");
+      const response = await API.get("/products");
       dispatch(productActions.setProducts(response.data));
     } catch (error) {
       console.error("Fetch error:", error.message);
@@ -21,7 +20,7 @@ export const addProducts = (product) => {
         return;
       }
 
-      await axios.post("http://localhost:5000/addproducts", product, {
+      await API.post("/addproducts", product, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
@@ -42,7 +41,7 @@ export const addProducts = (product) => {
 export const updateProducts = (id, product) => {
   return async (dispatch) => {
     try {
-      await axios.put(`http://localhost:3001/updateproducts/${id}`, product, {
+      await API.put(`/updateproducts/${id}`, product, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
@@ -64,7 +63,7 @@ export const updateProducts = (id, product) => {
 export const deleteProducts = (id) => {
   return async (dispatch) => {
     try {
-      await axios.delete(`http://localhost:3001/deleteproducts/${id}`, {
+      await API.delete(`/deleteproducts/${id}`, {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
         },

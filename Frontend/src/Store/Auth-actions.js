@@ -1,13 +1,10 @@
+import API from "../axiosInstance";
 import { authActions } from "./Auth-Slice";
 import { fetchCartData } from "./cart-actions";
-import axios from "axios";
 
 export const authenticate = (data) => async (dispatch) => {
   try {
-    const { data: response } = await axios.post(
-      "http://localhost:5000/login",
-      data
-    );
+    const { data: response } = await API.post("/login", data);
 
     localStorage.setItem("jwtToken", response.token);
     localStorage.setItem("user", JSON.stringify(response.user.role));
