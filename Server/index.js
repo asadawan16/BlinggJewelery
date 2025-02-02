@@ -15,14 +15,13 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://blingg-jewelery.vercel.app",
+    origin: "*", // Temporarily allow all origins
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 app.use(express.json());
-app.options("*", cors());
 app.use("/uploads", express.static("uploads"));
 
 mongoose
