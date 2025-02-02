@@ -21,8 +21,8 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-app.options("*", cors());
 app.use(express.json());
+app.options("*", cors());
 app.use("/uploads", express.static("uploads"));
 
 mongoose
