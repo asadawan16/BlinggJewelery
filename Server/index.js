@@ -13,7 +13,13 @@ const OrderModel = require("./models/Orders");
 const CartModel = require("./models/Cart");
 const app = express();
 
-app.use(cors({ origin: "*" }));
+app.use(
+  cors({
+    origin: "https://blingg-jewelery.vercel.app",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
