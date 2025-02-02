@@ -16,10 +16,12 @@ const app = express();
 app.use(
   cors({
     origin: "https://blingg-jewelery.vercel.app",
-    methods: "GET,POST,PUT,DELETE",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
