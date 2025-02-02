@@ -51,6 +51,9 @@ const authenticate = (req, res, next) => {
     res.status(400).json({ error: "Invalid token" });
   }
 };
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
 
 app.get("/products", async (req, res) => {
   try {
