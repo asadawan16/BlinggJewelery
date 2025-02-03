@@ -15,7 +15,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: "https://blingg-jewelery.vercel.app", // Replace with your frontend's URL
+  // origin: "https://blingg-jewelery.vercel.app", // Replace with your frontend's URL
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
   allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
 };
