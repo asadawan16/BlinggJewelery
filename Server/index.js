@@ -275,9 +275,7 @@ app.get("/cart", authenticate, async (req, res) => {
   try {
     console.log("Authenticated User:", req.user); // Debugging
     const userId = req.user.id;
-
     const cart = await CartModel.findOne({ userId });
-
     if (!cart) {
       return res.json({
         items: [],
@@ -286,7 +284,6 @@ app.get("/cart", authenticate, async (req, res) => {
         changed: false,
       });
     }
-
     res.json(cart);
   } catch (error) {
     res.status(500).json({ error: "Error fetching cart data" });
