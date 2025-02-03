@@ -14,24 +14,22 @@ const CartModel = require("./models/Cart");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const allowedOrigins = [
+  "https://blingg-jewelery.vercel.app",
+  "http://localhost:3000", // Add if testing locally
+];
+
 app.use(
   cors({
-    origin: "https://blingg-jewelery.vercel.app", // ✅ Must be your frontend URL, NOT '*'
-    credentials: true, // ✅ Required to allow cookies/auth headers
+    origin: allowedOrigins,
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// Ensure you have this BEFORE defining routes
-app.options(
-  "*",
-  cors({
-    origin: "https://blingg-jewelery.vercel.app",
-    credentials: true,
-  })
-);
-
+// Explicitly handle preflight requests (OPTIONS)
+app.options("*", cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
