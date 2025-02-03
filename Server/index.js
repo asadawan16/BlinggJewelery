@@ -299,12 +299,5 @@ app.delete("/clearcart", authenticate, async (req, res) => {
     res.status(500).json({ error: "Error clearing cart" });
   }
 });
-app.use((err, req, res, next) => {
-  console.error("Global Error:", err);
-  res.status(500).json({
-    error: "Internal server error",
-    message: err.message,
-    stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
-  });
-});
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
