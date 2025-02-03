@@ -29,7 +29,7 @@ const Login = () => {
       return;
     } else {
       setToggleDisabled(false);
-      console.log(result.error);
+      alert(result.error);
     }
   };
   return (

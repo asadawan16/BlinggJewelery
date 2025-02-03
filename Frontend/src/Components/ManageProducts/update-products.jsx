@@ -29,13 +29,11 @@ const UpdateProducts = () => {
         setProductprice(product.productprice);
         setCategory(product.category);
         setDescription(product.description);
-        setImagePreview(`http://localhost:3001/${product.imagepath}`); // Set fetched image
+        setImagePreview(`/${product.imagepath}`); // Set fetched image
       }
     }
   }, [id]);
-  // const handleFileChange = (e) => {
-  //   setImage(e.target.files[0]);
-  // };
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -58,11 +56,11 @@ const UpdateProducts = () => {
 
     try {
       await dispatch(updateProducts(id, productData));
-      alert("✅ Product updated successfully!");
+      alert(" Product updated successfully!");
       dispatch(productActions.setSelectedProduct(null));
       dispatch(productActions.setShowUpdateForm(false));
     } catch (error) {
-      alert("❌ Failed to update product. Please try again!");
+      alert("Failed to update product. Please try again!");
       console.error("Update failed:", error);
     }
   };

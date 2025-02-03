@@ -20,20 +20,17 @@ const PlaceOrder = () => {
   const handleCheckout = async (e) => {
     e.preventDefault();
 
-    // Ensure cart is not empty
     if (cartData.items.length === 0) {
       return navigate("/cart");
     }
     const formattedProducts = cartData.items.map((product) => ({
-      _id: product.id, // Convert `id` to `_id`
-      productname: product.name, // Change `name` to `productname`
-      productprice: product.price, // Change `price` to `productprice`
-      quantity: product.quantity, // Keep `quantity` unchanged
+      _id: product.id,
+      productname: product.name,
+      productprice: product.price,
+      quantity: product.quantity,
     }));
 
-    const token = sessionStorage.getItem("jwtToken"); // Retrieve JWT token if user is logged in
-    console.log("token", token);
-
+    const token = sessionStorage.getItem("jwtToken");
     const orderData = {
       products: formattedProducts,
       totalpayment: cartData.totalPayment,
@@ -55,6 +52,7 @@ const PlaceOrder = () => {
       setContact("");
       setShippingAddress("");
       setEmail("");
+      setname("");
 
       navigate("/thankyou");
     } catch (error) {

@@ -25,7 +25,7 @@ const AddProducts = () => {
     e.preventDefault();
 
     const productData = new FormData();
-    productData.append("productname", productname || ""); // Avoid undefined
+    productData.append("productname", productname || "");
     productData.append("productprice", productprice || "");
     productData.append("category", category || "");
     productData.append("description", description || "");
@@ -35,7 +35,7 @@ const AddProducts = () => {
     }
     try {
       await dispatch(addProducts(productData));
-      alert("✅ Product added successfully!");
+      alert("Product added successfully!");
       setProductname("");
       setProductprice("");
       setCategory("");
@@ -43,7 +43,7 @@ const AddProducts = () => {
       setImage(null);
       setImagePreview("");
     } catch (error) {
-      alert("❌ Failed to add product. Please try again!");
+      alert("Failed to add product. Please try again!");
     }
   };
 

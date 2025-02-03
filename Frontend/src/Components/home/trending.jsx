@@ -20,7 +20,7 @@ const Trending = () => {
                 products.category === "Earrings"
             )
             .map((product) => {
-              // Find the product in the cart only once
+              // Find the product in the cart
               const productInCart = cartData.items.find(
                 (item) => item.id === product._id
               );

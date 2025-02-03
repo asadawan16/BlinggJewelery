@@ -56,7 +56,7 @@ const Products = ({ show, hide }) => {
           <div className="product-grid">
             <ul className="grid">
               {filteredProducts.map((product) => {
-                // Find the product in the cart only once
+                // Find the product in the cart
                 const productInCart = cartData.items.find(
                   (item) => item.id === product._id
                 );
