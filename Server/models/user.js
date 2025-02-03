@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
   username: String,
   email: { type: String, unique: true, required: true },
   password: String,
-  role: { type: String, enum: ["admin", "user"], default: "user" }, // Role field added
+  role: { type: String, enum: ["admin", "user"], default: "user" },
 });
 
 const UserModel = mongoose.model("UserSignup", UserSchema);

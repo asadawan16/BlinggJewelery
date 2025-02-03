@@ -5,31 +5,44 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
 const ProductModel = require("./models/product");
 const UserModel = require("./models/user");
 const OrderModel = require("./models/Orders");
 const CartModel = require("./models/Cart");
-const app = express();
+const { put, del } = require("@vercel/blob");
+const storage = multer.memoryStorage();
+const upload = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB limit
+});
+
 const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
   "https://blingg-jewelery.vercel.app",
-  "http://localhost:3000",
+  "http://localhost:5173",
 ];
 
+const app = express();
+// Cors Configuration
 app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-    exposedHeaders: ["Authorization"],
-  })
+  cors(
+    {
+      origin: allowedOrigins,
+      credentials: true,
+      exposedHeaders: ["Authorization"],
+    },
+    (req, res, next) => {
+      res.setHeader("Access-Control-Allow-Origin", allowedOrigins);
+      res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+      res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Content-Type, Authorization"
+      );
+      next();
+    }
+  )
 );
-// Explicitly handle preflight requests (OPTIONS)
-app.options("*", cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
-app.use("/uploads", express.static("uploads"));
-
 mongoose
   .connect(
     "mongodb+srv://asad:Arena2k16@ecommerce.tl4xg.mongodb.net/Ecommerce?retryWrites=true&w=majority"
@@ -40,13 +53,6 @@ mongoose
 app.get("/", (req, res) => {
   res.send("Hello Server is Running");
 });
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) =>
-    cb(null, path.join(__dirname, "../Frontend/public/uploads")),
-  filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
-});
-const upload = multer({ storage });
 
 const authenticate = (req, res, next) => {
   const authHeader = req.header("Authorization");
@@ -83,71 +89,98 @@ app.get("/products/:id", async (req, res) => {
     res.status(500).json({ error: "Error fetching product" });
   }
 });
-app.post(
-  "/addproducts",
-  authenticate,
-  upload.single("image"),
-  async (req, res) => {
-    try {
-      const { productname, productprice, category, description } = req.body;
-
-      if (!productname || !productprice || !category || !description) {
-        return res.status(400).json({ error: "All fields are required" });
-      }
-
-      const imagePath = req.file ? `uploads/${req.file.filename}` : null;
-
-      const newProduct = new ProductModel({
-        productname,
-        productprice,
-        category,
-        image: imagePath,
-        description,
-      });
-
-      const product = await newProduct.save();
-      res.status(201).json(product);
-    } catch (error) {
-      console.error("Error adding product:", error);
-      res.status(500).json({ error: "Error adding product" });
+// Add a new product
+app.post("/addproducts", upload.single("image"), async (req, res) => {
+  try {
+    const { productname, productprice, category, description } = req.body;
+    if (!productname || !productprice || !category || !description) {
+      return res.status(400).json({ error: "All fields are required" });
     }
-  }
-);
 
+    let imageURL = null;
+    if (req.file) {
+      const blob = await put(
+        `products/${req.file.originalname}`,
+        req.file.buffer,
+        {
+          access: "public",
+        }
+      );
+      imageURL = blob.url;
+    }
+
+    const newProduct = new ProductModel({
+      productname,
+      productprice,
+      category,
+      image: imageURL,
+      description,
+    });
+
+    const product = await newProduct.save();
+    res.status(201).json(product);
+  } catch (error) {
+    console.error("Error adding product:", error);
+    res.status(500).json({ error: "Error adding product" });
+  }
+});
+
+// Update a product
 app.put("/updateproducts/:id", upload.single("image"), async (req, res) => {
   try {
     const { productname, productprice, category, description } = req.body;
     const product = await ProductModel.findById(req.params.id);
     if (!product) return res.status(404).json({ error: "Product not found" });
-    let imagePath = product.imagepath;
+
+    let imageURL = product.image;
     if (req.file) {
-      if (product.imagepath) fs.unlinkSync(product.imagepath);
-      imagePath = path.join("uploads", req.file.filename);
+      // Delete the old image if it exists
+      if (product.image) await del(product.image);
+
+      // Upload the new image to Vercel Blob
+      const blob = await put(
+        `products/${req.file.originalname}`,
+        req.file.buffer,
+        {
+          access: "public",
+        }
+      );
+      imageURL = blob.url;
     }
+
+    // Update product details
     product.productname = productname || product.productname;
     product.productprice = productprice || product.productprice;
     product.category = category || product.category;
     product.description = description || product.description;
-    product.imagepath = imagePath;
+    product.image = imageURL;
+
     await product.save();
     res.json({ message: "Product updated successfully", product });
-  } catch {
+  } catch (error) {
+    console.error("Error updating product:", error);
     res.status(500).json({ error: "Error updating product" });
   }
 });
 
+// Delete a product
 app.delete("/deleteproducts/:id", async (req, res) => {
   try {
     const product = await ProductModel.findById(req.params.id);
     if (!product) return res.status(404).json({ error: "Product not found" });
-    if (product.imagepath) fs.unlinkSync(product.imagepath);
+
+    // Delete the image from Vercel Blob if it exists
+    if (product.image) await del(product.image);
+
     await ProductModel.findByIdAndDelete(req.params.id);
     res.json({ message: "Product deleted successfully" });
-  } catch {
+  } catch (error) {
+    console.error("Error deleting product:", error);
     res.status(500).json({ error: "Error deleting product" });
   }
 });
 
+// User endpoints
 app.post("/signup", async (req, res) => {
   try {
     const { firstname, lastname, username, email, password } = req.body;
@@ -165,7 +198,7 @@ app.post("/signup", async (req, res) => {
     res.status(500).json({ error: "Signup failed" });
   }
 });
-
+// Login endpoint
 app.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -193,7 +226,6 @@ app.get("/user-orders", authenticate, async (req, res) => {
 });
 
 app.get("/all-orders", authenticate, async (req, res) => {
-  // Assuming only admins should access this
   try {
     const orders = await OrderModel.find({});
     res.status(200).json(orders);
@@ -288,6 +320,7 @@ app.get("/cart", authenticate, async (req, res) => {
     res.status(500).json({ error: "Error fetching cart data" });
   }
 });
+// Clear the cart
 app.delete("/clearcart", authenticate, async (req, res) => {
   try {
     await CartModel.findOneAndUpdate(
