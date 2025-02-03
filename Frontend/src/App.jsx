@@ -27,6 +27,7 @@ function App() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const userRole = sessionStorage.getItem("user");
   const token = sessionStorage.getItem("jwtToken");
+  console.log("JWTTOKEN:", token);
   // Fetching Products
   useEffect(() => {
     dispatch(fetchProducts());
