@@ -17,7 +17,10 @@ const ProductItem = ({ id, title, imagePath, quantity, price }) => {
         </>
       )}
       <div className="product-image">
-        <img src={`http://localhost:3001/${imagePath}`} alt={title} />
+        <img
+          src={`https://blingg-jewelery-backend.vercel.app/${imagePath}`}
+          alt={title}
+        />
       </div>
       <h3>{title}</h3>
       <span>${price}</span>
