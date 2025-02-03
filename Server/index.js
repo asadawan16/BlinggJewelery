@@ -15,7 +15,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://blingg-jewelery.vercel.app",
+    origin: ["https://blingg-jewelery.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
@@ -28,6 +28,10 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB Connection Error:", err));
+
+app.get("/", (req, res) => {
+  res.send("Hello Server is Running");
+});
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "uploads/"),
@@ -51,9 +55,6 @@ const authenticate = (req, res, next) => {
     res.status(400).json({ error: "Invalid token" });
   }
 };
-app.get("/", (req, res) => {
-  res.redirect("https://blingg-jewelery-frontend.vercel.app");
-});
 
 app.get("/products", async (req, res) => {
   try {
