@@ -28,7 +28,7 @@ app.use(
 );
 
 // Add this after CORS setup
-app.options("*", cors()); //
+app.options("https://blingg-jewelery.vercel.app", cors()); //
 // Explicitly handle preflight requests (OPTIONS)
 app.options("*", cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
