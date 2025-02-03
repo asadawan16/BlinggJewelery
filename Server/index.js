@@ -16,12 +16,22 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: "https://blingg-jewelery.vercel.app", // Replace with your frontend URL
-    credentials: true, // Allow cookies & authentication headers
+    origin: "https://blingg-jewelery.vercel.app", // ✅ Must be your frontend URL, NOT '*'
+    credentials: true, // ✅ Required to allow cookies/auth headers
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+// Ensure you have this BEFORE defining routes
+app.options(
+  "*",
+  cors({
+    origin: "https://blingg-jewelery.vercel.app",
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
