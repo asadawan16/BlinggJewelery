@@ -13,22 +13,18 @@ const OrderModel = require("./models/Orders");
 const CartModel = require("./models/Cart");
 const app = express();
 const PORT = process.env.PORT || 5000;
+const allowedOrigins = [
+  "https://blingg-jewelery.vercel.app",
+  "http://localhost:3000",
+];
+
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: allowedOrigins,
     credentials: true,
     exposedHeaders: ["Authorization"],
   })
 );
-
-// Add this after CORS setup
-app.options("https://blingg-jewelery.vercel.app", cors()); //
 // Explicitly handle preflight requests (OPTIONS)
 app.options("*", cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
