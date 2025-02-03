@@ -46,7 +46,7 @@ const Header = () => {
                 Products
               </NavLink>
             </li>
-            {user && (
+            {user === "user" && (
               <li>
                 <NavLink
                   to="/myorders"

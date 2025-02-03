@@ -32,6 +32,7 @@ const PlaceOrder = () => {
     }));
 
     const token = sessionStorage.getItem("jwtToken"); // Retrieve JWT token if user is logged in
+    console.log("token", token);
 
     const orderData = {
       products: formattedProducts,
