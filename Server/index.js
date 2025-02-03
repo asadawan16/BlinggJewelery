@@ -176,7 +176,9 @@ app.post("/login", async (req, res) => {
     const user = await UserModel.findOne({ email });
     if (!user || !(await bcrypt.compare(password, user.password)))
       return res.status(400).json({ error: "Invalid credentials" });
-    const token = jwt.sign({ id: user._id }, "SECRET_KEY", { expiresIn: "1h" });
+    const token = jwt.sign({ id: user._id }, "blinggJewelery", {
+      expiresIn: "1h",
+    });
     res.json({ token, user: { id: user._id, role: user.role } });
   } catch {
     res.status(500).json({ error: "Login failed" });
