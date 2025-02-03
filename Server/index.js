@@ -25,9 +25,7 @@ app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
 mongoose
-  .connect(
-    "mongodb+srv://asad:Arena2k16@ecommerce.tl4xg.mongodb.net/Ecommerce?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGO_URl)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB Connection Error:", err));
 
