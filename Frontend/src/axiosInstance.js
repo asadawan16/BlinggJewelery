@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL:
-    "blingg-jewelery-backend-jjgxc4j4z-asadullahtalats-projects.vercel.app",
+  baseURL: REACT_APP_API_URL,
   withCredentials: true, // Include cookies if using authentication
 });
 
