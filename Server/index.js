@@ -15,7 +15,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*", // Temporarily allow all origins
+    origin: "https://blingg-jewelery.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
