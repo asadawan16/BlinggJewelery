@@ -32,6 +32,10 @@ mongoose
 app.get("/", (req, res) => {
   res.send("Hello Server is Running");
 });
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something went wrong!");
+});
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "uploads/"),
