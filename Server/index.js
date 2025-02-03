@@ -15,6 +15,7 @@ const app = express();
 
 app.use(
   cors({
+    accessControlAllowOrigin: "*",
     origin: "https://blingg-jewelery.vercel.app", // Allow requests only from your frontend
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
