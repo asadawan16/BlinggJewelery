@@ -34,6 +34,9 @@ const SideNav = ({ setActiveComponent }) => {
             <Link to="/products">Products</Link>
           </li>
           <li>
+            <Link to="/orders">Orders</Link>
+          </li>
+          <li>
             <Link
               to="/login"
               onClick={() => {

@@ -1,14 +1,23 @@
 import { Fragment, useState } from "react";
 import "./DataTable.css";
 
-const DataTable = ({ products, children, title, Orders, state }) => {
+const DataTable = ({ products, children, title, Orders, state, users }) => {
   const [searchInput, setSearchInput] = useState("");
-  const data = state === "product" ? products : Orders;
+  const data =
+    state === "product"
+      ? products
+      : state === "order"
+      ? Orders
+      : state === "user"
+      ? users
+      : null;
   console.log(data);
 
   const filteredData = data?.filter((item) =>
     state === "product"
       ? item.productname?.toLowerCase().includes(searchInput.toLowerCase())
+      : state === "user"
+      ? item.username?.toLowerCase().includes(searchInput.toLowerCase())
       : item.name?.toLowerCase().includes(searchInput.toLowerCase())
   );
 
@@ -63,6 +72,18 @@ const DataTable = ({ products, children, title, Orders, state }) => {
                     </tr>
                   )}
                 </Fragment>
+              ))}
+            </>
+          ) : null}
+          {state === "user" ? (
+            <>
+              {filteredData.map((item, index) => (
+                <tr key={index}>
+                  <td>{item._id}</td>
+                  <td>{item.username}</td>
+                  <td>{item.email}</td>
+                  <td>{item.role}</td>
+                </tr>
               ))}
             </>
           ) : null}

@@ -23,7 +23,7 @@ const AdminDashboard = () => {
       title: "Total Users",
       icon: usericon,
       component: "totalUsers",
-      value: 0,
+      value: users.length,
     },
     {
       id: 2,
@@ -51,7 +51,7 @@ const AdminDashboard = () => {
     switch (activeComponent) {
       case "totalUsers":
         return (
-          <DataTable title="Total Users">
+          <DataTable title="Total Users" users={users} state="user">
             <th>User ID</th>
             <th>Username</th>
             <th>Email</th>
@@ -61,12 +61,7 @@ const AdminDashboard = () => {
 
       case "totalOrders":
         return (
-          <DataTable
-            title="Total Orders"
-            showSearchBar={true}
-            Orders={Orders}
-            state="order"
-          >
+          <DataTable title="Total Orders" Orders={Orders} state="order">
             <th>Order No.</th>
             <th>Order ID</th>
             <th>User</th>

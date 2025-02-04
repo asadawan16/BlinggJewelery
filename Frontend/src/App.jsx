@@ -66,7 +66,7 @@ function App() {
   }, [cart, dispatch]);
   // fetching user data
   useEffect(() => {
-    if (isAuthenticated && userRole === "admin") {
+    if (userRole === "admin") {
       dispatch(fetchUsers());
       console.log("users fetched");
     }
@@ -82,7 +82,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/myorders" element={<Orders />} />
+        <Route path="/orders" element={<Orders />} />
         <Route path="/placeorder" element={<PlaceOrder />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
