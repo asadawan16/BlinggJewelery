@@ -9,7 +9,8 @@ const ProductModel = require("./models/product");
 const UserModel = require("./models/user");
 const OrderModel = require("./models/Orders");
 const CartModel = require("./models/Cart");
-const { put, del } = require("@vercel/blob");
+const vercelBlob = require("@vercel/blob");
+const { put, del } = vercelBlob;
 const storage = multer.memoryStorage();
 const upload = multer({
   storage,
@@ -124,8 +125,6 @@ app.post("/addproducts", upload.single("image"), async (req, res) => {
     res.status(500).json({ error: "Error adding product" });
   }
 });
-
-// Update a product
 app.put("/updateproducts/:id", upload.single("image"), async (req, res) => {
   try {
     const { productname, productprice, category, description } = req.body;
@@ -134,10 +133,11 @@ app.put("/updateproducts/:id", upload.single("image"), async (req, res) => {
 
     let imageURL = product.image;
     if (req.file) {
-      // Delete the old image if it exists
-      if (product.image) await del(product.image);
+      if (product.image) {
+        const filePath = product.image.split("/").pop(); // Extract filename
+        await del(`products/${filePath}`); // Delete old image
+      }
 
-      // Upload the new image to Vercel Blob
       const blob = await put(
         `products/${req.file.originalname}`,
         req.file.buffer,
@@ -148,7 +148,6 @@ app.put("/updateproducts/:id", upload.single("image"), async (req, res) => {
       imageURL = blob.url;
     }
 
-    // Update product details
     product.productname = productname || product.productname;
     product.productprice = productprice || product.productprice;
     product.category = category || product.category;
@@ -169,8 +168,10 @@ app.delete("/deleteproducts/:id", async (req, res) => {
     const product = await ProductModel.findById(req.params.id);
     if (!product) return res.status(404).json({ error: "Product not found" });
 
-    // Delete the image from Vercel Blob if it exists
-    if (product.image) await del(product.image);
+    if (product.image) {
+      const filePath = product.image.split("/").pop(); // Extract filename
+      await del(`products/${filePath}`); // Delete from Vercel Blob
+    }
 
     await ProductModel.findByIdAndDelete(req.params.id);
     res.json({ message: "Product deleted successfully" });
