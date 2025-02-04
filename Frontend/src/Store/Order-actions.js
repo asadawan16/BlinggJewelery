@@ -20,17 +20,18 @@ export const fetchOrderData = () => {
 };
 
 export const fetchUserOrder = () => {
-  return async () => {
+  return async (dispatch) => {
     try {
-      const response = API.get("/user-orders", {
+      const response = await API.get("/user-orders", {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
         },
       });
+
       dispatch(orderActions.setOrder(response.data));
       console.log("specific order", response.data);
     } catch (error) {
-      console.log("error fetching user Orders", error.message);
+      console.error("Error fetching user orders:", error.message);
     }
   };
 };

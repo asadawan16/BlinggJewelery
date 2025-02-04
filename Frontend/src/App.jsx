@@ -33,13 +33,12 @@ function App() {
     dispatch(fetchProducts());
   }, [dispatch]);
   // orders
-  dispatch(fetchOrderData());
   useEffect(() => {
-    if (userRole === "admin") {
+    if (isAuthenticated && userRole === "admin") {
       dispatch(fetchOrderData());
       return;
     }
-    if (userRole === "user") {
+    if (isAuthenticated && userRole === "user") {
       dispatch(fetchUserOrder());
       return;
     }
@@ -53,7 +52,7 @@ function App() {
 
   // Handling cart Data
   useEffect(() => {
-    if (token) {
+    if (isAuthenticated && token) {
       dispatch(fetchCartData());
     }
   }, [dispatch]);
