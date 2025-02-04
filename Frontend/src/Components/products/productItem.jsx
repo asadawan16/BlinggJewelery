@@ -17,7 +17,7 @@ const ProductItem = ({ id, title, imagePath, quantity, price }) => {
         </>
       )}
       <div className="product-image">
-        <img src={`/${imagePath}`} alt={title} />
+        <img src={imagePath} alt={title} />
       </div>
       <h3>{title}</h3>
       <span>${price}</span>

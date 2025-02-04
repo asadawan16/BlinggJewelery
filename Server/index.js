@@ -75,8 +75,18 @@ const authenticate = (req, res, next) => {
 app.get("/products", async (req, res) => {
   try {
     const products = await ProductModel.find({});
-    res.json(products);
-  } catch {
+
+    // Ensure the full URL is returned
+    const updatedProducts = products.map((product) => ({
+      ...product.toObject(),
+      image: product.image
+        ? product.image.replace("https:/", "https://")
+        : null, // Fix URL formatting
+    }));
+
+    res.json(updatedProducts);
+  } catch (error) {
+    console.error("Error fetching products:", error);
     res.status(500).json({ error: "Error fetching products" });
   }
 });
@@ -85,11 +95,19 @@ app.get("/products/:id", async (req, res) => {
   try {
     const product = await ProductModel.findById(req.params.id);
     if (!product) return res.status(404).json({ error: "Product not found" });
+
+    // Fix the URL format before sending response
+    product.image = product.image
+      ? product.image.replace("https:/", "https://")
+      : null;
+
     res.json(product);
-  } catch {
+  } catch (error) {
+    console.error("Error fetching product:", error);
     res.status(500).json({ error: "Error fetching product" });
   }
 });
+
 // Add a new product
 app.post("/addproducts", upload.single("image"), async (req, res) => {
   try {
