@@ -200,6 +200,15 @@ app.delete("/deleteproducts/:id", async (req, res) => {
 });
 
 // User endpoints
+app.get("/users", authenticate, async (req, res) => {
+  try {
+    const users = await UserModel.find().select("-password"); // Exclude password field
+    res.status(200).json(users);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ error: "Failed to retrieve users" });
+  }
+});
 app.post("/signup", async (req, res) => {
   try {
     const { firstname, lastname, username, email, password } = req.body;

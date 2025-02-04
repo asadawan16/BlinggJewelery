@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../Store/cart-slice";
 import { clearCart, fetchCartData } from "../../Store/cart-actions";
+import { fetchUserOrder } from "../../Store/Order-actions";
 
 const PlaceOrder = () => {
   const [contact, setContact] = useState("");
@@ -53,7 +54,7 @@ const PlaceOrder = () => {
       setShippingAddress("");
       setEmail("");
       setname("");
-
+      dispatch(fetchUserOrder());
       navigate("/thankyou");
     } catch (error) {
       console.error("Error placing order:", error);

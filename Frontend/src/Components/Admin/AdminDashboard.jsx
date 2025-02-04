@@ -15,7 +15,8 @@ const AdminDashboard = () => {
   const [profileToggle, setProfileToggle] = useState(false);
   const products = useSelector((state) => state.product.products);
   const Orders = useSelector((state) => state.order.orders);
-
+  const users = useSelector((state) => state.user.users);
+  console.log(users);
   const OptionData = [
     {
       id: 1,
@@ -50,12 +51,7 @@ const AdminDashboard = () => {
     switch (activeComponent) {
       case "totalUsers":
         return (
-          <DataTable
-            title="Total Users"
-            endpoint="/admin/users"
-            searchKey="username"
-            showSearchBar={true}
-          >
+          <DataTable title="Total Users">
             <th>User ID</th>
             <th>Username</th>
             <th>Email</th>
@@ -85,13 +81,7 @@ const AdminDashboard = () => {
 
       case "totalProducts":
         return (
-          <DataTable
-            title="Total Products"
-            products={products}
-            searchKey="productName"
-            showSearchBar={true}
-            state="product"
-          >
+          <DataTable title="Total Products" products={products} state="product">
             <th>Product ID</th>
             <th>Name</th>
             <th>Price</th>

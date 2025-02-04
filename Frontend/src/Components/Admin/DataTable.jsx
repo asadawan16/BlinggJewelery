@@ -3,9 +3,13 @@ import "./DataTable.css";
 
 const DataTable = ({ products, children, title, Orders, state }) => {
   const [searchInput, setSearchInput] = useState("");
+  const data = state === "product" ? products : Orders;
+  console.log(data);
 
-  const filteredData = products?.filter((item) =>
-    item.productname?.toLowerCase().includes(searchInput.toLowerCase())
+  const filteredData = data?.filter((item) =>
+    state === "product"
+      ? item.productname?.toLowerCase().includes(searchInput.toLowerCase())
+      : item.name?.toLowerCase().includes(searchInput.toLowerCase())
   );
 
   return (
@@ -37,7 +41,7 @@ const DataTable = ({ products, children, title, Orders, state }) => {
             </>
           ) : state === "order" ? (
             <>
-              {Orders.map((item, index) => (
+              {filteredData.map((item, index) => (
                 <Fragment key={index}>
                   {item.products?.length > 0 ? (
                     item.products.map((product, productIndex) => (

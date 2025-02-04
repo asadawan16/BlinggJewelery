@@ -19,21 +19,28 @@ import { fetchCartData, sendCartData } from "./Store/cart-actions";
 import { fetchOrderData, fetchUserOrder } from "./Store/Order-actions";
 import PrivateRoute from "./Components/Restrictions/privateroute";
 import Orders from "./Components/Order/Orders";
+import { fetchUsers } from "./Store/user-actions";
 let isInitial = true;
 
 function App() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const userRole = sessionStorage.getItem("user");
+  const userRole = JSON.parse(sessionStorage.getItem("user"));
   const token = sessionStorage.getItem("jwtToken");
-  console.log("JWTTOKEN:", token);
   // Fetching Products
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
   // orders
-
+  useEffect(() => {
+    if (userRole === "admin") {
+      dispatch(fetchOrderData());
+    }
+    if (userRole === "user") {
+      dispatch(fetchUserOrder());
+    }
+  }, [dispatch, userRole]);
   // Handling Authentication
   useEffect(() => {
     if (token && userRole) {
@@ -57,6 +64,13 @@ function App() {
       dispatch(sendCartData(cart));
     }
   }, [cart, dispatch]);
+  // fetching user data
+  useEffect(() => {
+    if (isAuthenticated && userRole === "admin") {
+      dispatch(fetchUsers());
+      console.log("users fetched");
+    }
+  }, [dispatch]);
 
   return (
     <Router>

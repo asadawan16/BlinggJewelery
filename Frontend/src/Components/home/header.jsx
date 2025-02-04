@@ -11,10 +11,11 @@ const Header = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const cartItems = useSelector((state) => state.cart.totalQuantity);
-  const user = useSelector((state) => state.auth.user);
-  console.log("User Data:", user);
+  const user =
+    JSON.parse(sessionStorage.getItem("user")) ||
+    useSelector((state) => state.auth.user);
 
-  const handleAuthenticated = () => {
+  const handleLogout = () => {
     localStorage.removeItem("jwtToken");
     localStorage.removeItem("user");
     sessionStorage.removeItem("jwtToken");
@@ -46,17 +47,19 @@ const Header = () => {
                 Products
               </NavLink>
             </li>
-            {user === "user" && (
+            {console.log(user)}
+
+            {isAuthenticated && (
               <li>
                 <NavLink
                   to="/myorders"
                   className={({ isActive }) => (isActive ? "active" : "")}
                 >
-                  MyOrders
+                  {user === "user" ? "MyOrders" : "Orders"}
                 </NavLink>
               </li>
             )}
-            {user === "admin" && (
+            {isAuthenticated && user === "admin" && (
               <li>
                 <NavLink
                   to="/AdminDashboard"
@@ -77,7 +80,7 @@ const Header = () => {
             to="/login"
             id="login-signup-btn"
             onClick={() => {
-              isAuthenticated && handleAuthenticated();
+              isAuthenticated && handleLogout();
             }}
           >
             <CiPower className="logut-icon" />

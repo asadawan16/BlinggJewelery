@@ -1,22 +1,9 @@
 import Header from "../home/header";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "./Orders.css";
-import { useEffect } from "react";
-
 const Orders = () => {
-  const dispatch = useDispatch();
-  const userRole = sessionStorage.getItem("user");
-  useEffect(() => {
-    if (userRole === "admin") {
-      dispatch(fetchOrderData());
-      return;
-    }
-    if (userRole === "user") {
-      dispatch(fetchUserOrder());
-      return;
-    }
-  }, [dispatch, userRole]);
   const Orders = useSelector((state) => state.order.orders);
+  console.log(Orders);
 
   return (
     <>
