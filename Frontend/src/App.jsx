@@ -33,16 +33,7 @@ function App() {
     dispatch(fetchProducts());
   }, [dispatch]);
   // orders
-  useEffect(() => {
-    if (isAuthenticated && userRole === "admin") {
-      dispatch(fetchOrderData());
-      return;
-    }
-    if (isAuthenticated && userRole === "user") {
-      dispatch(fetchUserOrder());
-      return;
-    }
-  }, [dispatch, userRole]);
+
   // Handling Authentication
   useEffect(() => {
     if (token && userRole) {
