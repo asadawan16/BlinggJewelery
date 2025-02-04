@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "./Store/product-actions";
 import { authActions } from "./Store/Auth-Slice";
 import { fetchCartData, sendCartData } from "./Store/cart-actions";
-import { fetchOrderData } from "./Store/Order-actions";
+import { fetchOrderData, fetchUserOrder } from "./Store/Order-actions";
 import PrivateRoute from "./Components/Restrictions/privateroute";
 import Orders from "./Components/Order/Orders";
 let isInitial = true;
@@ -37,9 +37,11 @@ function App() {
   useEffect(() => {
     if (userRole === "admin") {
       dispatch(fetchOrderData());
+      return;
     }
     if (userRole === "user") {
-      dispatch(fetchOrderData());
+      dispatch(fetchUserOrder());
+      return;
     }
   }, [dispatch, userRole]);
   // Handling Authentication
