@@ -20,7 +20,7 @@ const ProductItem = ({ id, title, imagePath, quantity, price }) => {
         <img src={imagePath} alt={title} />
       </div>
       <h3>{title}</h3>
-      <span>${price}</span>
+      <span className="product-price">${price}</span>
       {!Toggle ? (
         <button
           className="add-to-cart-button"

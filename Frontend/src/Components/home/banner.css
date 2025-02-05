@@ -11,7 +11,7 @@
     padding-top: 140px;
     font-size: 16px;
     font-weight: 400;
-    font-family: 'Cinzel';
+    font-family: 'Cinzel';  
 }
 .banner h1 {
     margin: 10px 0;
@@ -38,9 +38,69 @@
     border: 1px solid #000;
     font-family: 'Roboto';
     font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
 }
 .banner  a:hover {
     background-color: #000;
     color: #fff;
     transition: all 0.4s ease-in-out;
+}
+
+@media (max-width: 1280px) {
+    .banner {
+        height: 500px;
+        padding:0 50px;
+    }
+    .banner h1 {
+        font-size: 50px;
+        line-height: 55px;
+        margin-left: 20px;
+    }
+    .banner-description {
+        font-size: 12px;
+        line-height: 18px;
+        max-width: 380px;
+    }
+    .banner  a {
+        padding: 10px 30px;
+    }
+}
+
+@media (max-width: 1024px) {
+  
+    .banner h1 {
+        font-size: 40px;
+        line-height: 45px;
+        max-width: 400px;
+    }
+    .banner-description {
+        font-size: 12px;
+        line-height: 18px;
+        max-width: 380px;
+    }
+}
+@media (max-width: 768px) {
+    .banner {
+        height: 400px;
+    }
+    .banner .subheading {
+        padding-top: 80px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .banner h1 {
+        font-size: 30px;
+        line-height: 35px;
+        max-width: 300px;
+    }
+    .banner-description {
+        font-size: 10px;
+        line-height: 16px;
+        max-width: 260px;
+    }
+    .banner  a {
+        padding: 8px 20px;
+        font-size: 12px;
+    }
 }

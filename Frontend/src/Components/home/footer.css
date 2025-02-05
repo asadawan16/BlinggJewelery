@@ -6,10 +6,8 @@ footer {
 }
 footer .container  {
     display: flex;
-
     justify-content: space-between;
     align-items: top;
-
 }
 .logo img{
     width: 120%;
@@ -42,4 +40,32 @@ footer .container  {
     font-weight: 300;
     border-top: 1px solid rgba(0, 0, 0, 0.096) ;
     color: rgba(0,0,0,0.7); 
+}
+ 
+@media (max-width: 1024px) {
+    footer .container {
+        padding: 0 50px;
+    }
+    .logo img{
+        width: 100%;
+    
+    }
+}
+@media (max-width: 768px) {
+    footer .container {
+        flex-direction :column;
+        row-gap: 40px;
+        justify-content: center;
+    }
+    .logo img{
+        width: 120px;
+    }
+    .footer-list {
+        height: auto;
+    }
+}
+@media (max-width: 480px) {
+    footer .container {
+        row-gap: 20px;
+    }
 }

@@ -1,5 +1,5 @@
 .best-selling{
-    padding: 40px  0;
+    padding: 40px  ;
 }
 .best-selling span{
     margin-bottom: 5px;
@@ -18,7 +18,51 @@
     text-align: center;
 }
 .grid{
+    margin-bottom: 100px;
     display: flex;
-    justify-content: center;
+    row-gap: 30px;
     column-gap: 20px;
+    padding: 0 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+@media (max-width: 1440px) {
+
+    .best-selling h2 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+}
+@media (max-width: 1280px) {
+    .best-selling h2 {
+        font-size: 38px;
+        line-height: 45px;
+    }
+}
+@media (max-width: 1024px) {
+    .best-selling h2 {
+        font-size: 36px;
+        line-height: 45px;
+    }
+}
+@media (max-width: 768px) {
+    .best-selling .container {
+        margin: 0 auto;
+        padding: 0 20px;
+        width: 100%;
+    }
+    .best-selling h2 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+}
+@media (max-width: 480px) {
+    .best-selling h2 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .grid {
+        padding: 0 20px;
+    }
 }

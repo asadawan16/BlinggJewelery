@@ -4,12 +4,13 @@
 .grid{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center !important;
 }
 
 .products .container h2 {
-    margin: 50px 0 5px;
-    font-size: 35px;
-    line-height: 49px;
+    margin: 50px 0 20px;
+    font-size: 32px;
+    line-height: 38px;
     font-family: 'Cinzel';
     font-weight: 400;
     text-align: center;
@@ -23,7 +24,6 @@
 .search-grid input {
 
     width: 300px;
-    height: 50px;
     border-radius: 25px;
     font-size: 18px;
     line-height: 24px;
@@ -31,15 +31,14 @@
     color: #000 !important;
     font-family: 'Cinzel';
     border: 1px solid rgba(0, 0, 0, 0.096);
-    padding: 0 20px;
+    padding:15px  20px !important;
 }
 .search-grid select {
 
     width: 300px;
-    height: 50px;
     border-radius: 25px;
     border: 1px solid rgba(0, 0, 0, 0.096);
-    padding: 0 20px;
+    padding: 15px 20px !important;
     font-size: 18px;
     line-height: 24px;
     font-weight: 500;
@@ -54,31 +53,62 @@
 .grid {
     row-gap: 50px;
 }
-.product span {
-    display: block;
-    text-align: left;
-    font-family: 'Roboto';
-    font-weight: 400;
-    color: #808285;
+
+@media (max-width: 1440px) {
+    .search-grid input {
+        width: 250px;
+        font-size:  16px;
+        line-height: 20px;
+    }
+    .search-grid select {
+        width: 250px;
+        font-size: 16px;
+    }
+
 }
-.addedtocart-quantity {
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    background-color: #a86e3b;
-    color: #fff !important;
-    font-family: 'Roboto';
-    z-index: 1;
-    font-size: 10px;
-    padding: 5px;
-    clip-path: circle();   
+@media (max-width: 1024px) {    
+    .search-grid input {
+        width: 200px !important;
+        font-size:  14px;
+        line-height: 18px;
+    }
+    .search-grid select {
+        width: 247px !important;
+        font-size: 14px;
+    }
+    .products  h2 {
+        font-size: 28px  !important;
+        line-height: 34px  !important;
+    }
 }
-.product-cart-icon {
-    right: 30px;
-    position: absolute;
-    top: 6px;
-    font-family: 'Roboto';
-    z-index: 1;
-    color: #a86e3b;
-    font-size: 18px;   
+@media (max-width: 768px) {
+    .products h2 {
+        font-size: 26px !important;
+        line-height: 32px !important;
+        max-width: 40%;
+        margin : 50px auto  !important;
+    }
+
+} 
+@media (max-width :600px){
+    .search-grid {
+        flex-direction: column;
+        row-gap: 20px;
+        width: 50%;
+        margin: 20px auto !important;
+    }
+    .search-grid input ,.search-grid select{
+        padding: 10px 20px !important;
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .products h2 {
+        max-width: 60%;
+    }
+
+}
+@media (max-width :486px ){
+    .search-grid {
+        width: 55%;
+    }
 }

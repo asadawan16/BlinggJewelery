@@ -6,10 +6,10 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 20px 40px;
 }
  header .logo img {
-    width: 100%;
+    width: 90%;
 }
 header .nav ul {
     display: flex;
@@ -55,8 +55,8 @@ header .nav ul {
 .cart-icon {
     position: relative;
     top: 5px;
-    font-size: 34px;
-    line-height: 40px;
+    font-size: 32px;
+    line-height: 38px;
     color: #a86e3b;
 }
 
@@ -91,3 +91,137 @@ header .nav ul {
     font-size: 24px;
     padding-right: 5px;
 }
+
+@media (max-width: 1280px ) {
+    header .logo img {
+        width: 80px !important;
+    }
+    .nav ul li a{
+        font-size: 20px;
+        line-height: 26px;
+    
+    }
+    #login-signup-btn {
+        font-size: 16px;
+        line-height: 20px;
+        padding: 10px 15px;
+    }
+    .cart-icon {
+        font-size: 28px;
+        line-height: 34px;
+    }
+}
+    
+@media (max-width: 1024px) {
+
+
+    .nav ul li a{
+        font-size: 18px;
+        line-height: 22px;
+    
+    }
+    #login-signup-btn {
+        font-size: 14px;
+        line-height: 18px;
+        padding: 8px 15px;
+    }
+    .cart-icon {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    #cart-count {
+        font-size: 12px;
+        line-height: 15px;
+        padding: 6px ;
+    }
+  
+
+}
+/* Mobile Menu Icon */
+.mobile-menu-icon {
+    display: none;
+    cursor: pointer;
+  }
+  
+  /* Mobile Navigation */
+  @media (max-width: 768px) {
+    header .logo img {
+      width: 70px    !important;
+    }
+    .mobile-menu-icon {
+      display: block;
+      position: absolute;
+      right: 20px;
+      top:25px;
+    }
+  
+    .nav {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+  
+    .nav.mobile-nav-open {
+      display: flex;
+    }
+  
+    .nav ul {
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px 0 0;
+    }
+  
+    .nav ul li {
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  
+    .nav ul li a {
+      display: block;
+      width: 100%;
+      padding: 10px 0;
+    }
+  
+    .header-btn {
+        align-items: center;
+        gap: 10px;
+        margin-right: 40px;
+
+    }
+    #login-signup-btn {
+        font-size: 14px;
+        line-height: 20px;
+        padding: 8px 15px;
+    }
+}
+  @media (max-width: 480px) {
+    .nav ul li a {
+      font-size: 16px;
+    }
+  
+    .header-btn {
+      gap: 5px;
+    }
+  
+    .cart-icon {
+      font-size: 20px;
+      line-height: 30px;
+    }
+    #cart-count {
+        font-size: 10px;
+        line-height: 15px;
+        padding: 5px ;
+    }
+    #login-signup-btn {
+        font-size: 12px;
+        line-height: 16px;
+        padding: 5px 10px;
+    }
+  }

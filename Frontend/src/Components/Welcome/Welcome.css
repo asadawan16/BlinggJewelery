@@ -7,7 +7,7 @@
     height: 100vh;
 }
 .welcome img {
-    width: 10%;
+    width: 100px !important;
 }
 .welcome h1 {
 
@@ -35,3 +35,70 @@
     color: #fff;
     transition: all 0.4s ease-in-out;
 }
+/* Responsive CSS */
+@media (max-width: 1440px) {
+    .welcome h1 {
+        font-size: 34px;
+        line-height: 40px;
+    }
+    .options a{
+        padding: 10px 20px;
+        font-size: 16px;    
+        line-height: 20px;
+
+    }
+
+}
+@media (max-width: 1280px) {
+    .welcome h1 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+}
+@media (max-width: 1024px) {
+    .welcome h1 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+}
+@media (max-width: 768px) {
+    .welcome h1 {
+        font-size: 28px;
+        line-height: 40px;
+    }
+    .options a{
+        font-size: 14px;    
+        line-height: 20px;}
+}
+@media (max-width: 600px) {
+    .welcome {
+        padding: 0 30px;
+    }
+    .welcome h1 {
+        font-size: 26px;
+        line-height: 40px;
+    }
+    .options a{
+   
+        font-size: 14px;    
+        line-height: 20px;}
+}
+@media (max-width: 535px) { 
+    .welcome {
+        padding: 0 15px ;
+    }
+    .welcome h1 {
+        font-size: 24px;
+        max-width: 60%;
+        line-height: 40px;
+    }
+    .options {
+        row-gap: 15px !important;
+        flex-direction: column;
+    }
+    .options a{
+        text-align: center;
+        font-size: 12px;    
+        line-height: 20px;}
+    }
