@@ -71,17 +71,20 @@
     line-height: 20px;
     text-align: left;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1440px){
     .product h3 {
-        font-size: 20px;
-        line-height: 24px;
-    }
+        font-size: 20px ;
+        line-height: 28px;
+    } 
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .product h3 {
         font-size: 18px;
         line-height: 22px;
     }
+}
+@media (max-width: 768px) {
+ 
     .add-to-cart-button {
         display: block !important;
         position: static !important;
