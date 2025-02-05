@@ -1,11 +1,21 @@
 #placeorder {
  margin:  50px auto;
 }
- th {
-     font-family: 'Cinzel';
-    font-weight: 600 !important;
+#placeorder .container {
+    width: 80% !important;
 }
-.order td ,th {
+#placeorder th {
+    font-weight: 500 !important;
+}
+#placeorder h1 {
+    font-size: 42px;
+    font-weight: 500;
+    text-align: center;
+    font-family: 'Cinzel';
+    margin: 50px 0;
+    color: #a86e3b;
+}
+.orderedproducts td ,th {
     border-bottom: 1px solid rgba(0, 0, 0, 0.096);
     width: 40%;
     padding:10px 15px;
@@ -16,9 +26,9 @@
     text-align:left ;
 }
 #placeorder h3 {
-    margin: 50px 0 5px;
+    margin: 50px 0 20px;
     font-family: 'Cinzel';
-    font-weight: 600;
+    font-weight: 500;
     font-size: 22px;
     line-height: 49px;
     text-align: left;
@@ -26,7 +36,7 @@
 #placeorder h2 {
     margin: 20px 0 5px;
     font-family: 'Cinzel';
-    font-weight: 600;
+    font-weight: 500;
     font-size: 22px;
     line-height: 49px;
     text-align: left;
@@ -63,11 +73,95 @@
     text-align: center;
     padding: 20px 40px;
     border-radius: 5px;
-    color: #fff;
-    background-color: #a86e3b;
+    color: #a86e3b;
+    border: 1px solid #a86e3b;
+    background-color: #faf5f0;
     line-height: 23px;
 }
 #placeorder .checkoutbtn:hover {
-    background-color: #000;
-    transition: all 0.4ms ease-in-out;
+    background-color: #a86e3b !important;
+    color: #faf5f0;
+    transition: all 0.4s ease-in-out;
+}
+
+
+@media (max-width:1440px){
+#placeorder  h1 {
+    font-size: 32px !important;
+    line-height: 42px;
+}
+.orderedproducts th  {
+    font-size: 20px;
+    line-height: 26px;
+}
+.orderedproducts td {
+    font-size: 18px;
+    line-height: 22px;
+}
+#placeorder h2 {
+    font-size: 20px;
+    line-height: 26px;
+}
+#placeorder h3 {
+    font-size: 20px;
+    line-height: 22px;
+}
+#placeorder input ,#placeorder textarea {
+    padding: 10px ;
+}
+#placeorder .checkoutbtn {
+    font-size: 24px;
+    line-height: 30px;
+}
+}
+
+@media (max-width:786px){
+    #placeorder h1 {
+        font-size: 28px !important;
+        line-height: 34px;
+    }
+    
+    .orderedproducts th ,.orderedproducts td {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    #placeorder h2 {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    #placeorder h3 {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    #placeorder input, #placeorder textarea {
+        font-size: 14px !important;
+        line-height: 20px;
+    }
+    #placeorder .checkoutbtn {
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
+@media (max-width:486px) {
+
+    .orderedproducts th ,.orderedproducts td {
+        font-size: 14px;
+        line-height: 18px;
+    }
+    #placeorder h2 {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    #placeorder h3 {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    #placeorder input ,#placeorder textarea {
+        font-size: 12px !important;
+        line-height: 20px !important;
+    }
+    #placeorder .checkoutbtn {
+        font-size: 16px;
+        line-height: 22px;
+    }
 }

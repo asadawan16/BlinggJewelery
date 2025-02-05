@@ -76,7 +76,7 @@ const PlaceOrder = () => {
           </thead>
           <tbody>
             {cartData.items.map((product) => (
-              <tr key={product._id} className="order">
+              <tr key={product._id} className="order-items">
                 <td>{product.name}</td>
                 <td>${product.price}</td>
                 <td>{product.quantity}</td>
@@ -85,8 +85,8 @@ const PlaceOrder = () => {
             ))}
           </tbody>
         </table>
-        <h3>Total Payment : ${cartData.totalPayment}</h3>
-        <h2>Shippin Details</h2>
+        <h2>Total Payment : ${cartData.totalPayment}</h2>
+        <h3>Shipping Details</h3>
         <input
           type="text"
           name=""

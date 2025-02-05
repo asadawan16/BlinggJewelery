@@ -11,15 +11,18 @@
     padding-top: 140px;
     font-size: 16px;
     font-weight: 400;
-    font-family: 'Cinzel';  
+    font-family: 'Cinzel';
+    color: rgba(0, 0, 0, 0.66);
+
 }
 .banner h1 {
-    margin: 10px 0;
+    margin: 20px 0;
     font-size: 65px;
     line-height: 69px;
     font-family: 'Cinzel';
     font-weight: 400;
     max-width: 600px;
+    color: #a86e3b;
     text-transform: uppercase;
 }
 .banner-description{
@@ -30,7 +33,7 @@
     font-weight: 400;
     text-align: justify;
     max-width: 430px;
-    color: #000000a8;
+    color: rgba(0, 0, 0, 0.66);
 }
 .banner  a {
     color: #000;
@@ -47,6 +50,13 @@
     transition: all 0.4s ease-in-out;
 }
 
+@media (max-width:1440px){
+    .banner h1 {
+    font-size: 45px;
+    line-height: 51px;
+
+ }
+}
 @media (max-width: 1280px) {
     .banner {
         height: 500px;
