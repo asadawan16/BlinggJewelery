@@ -4,11 +4,18 @@
     /* background-color: #faf5f0; */
     background-color: #fff;
     min-height: 100vh; 
+    margin-bottom: 50px;
 }
 .cart .container {
-    width: 1260px;
+    width: 80% ;
     margin: 0 auto;
 }
+.cart-grid {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
 .cart h2 {
     margin: 50px 0 20px;
     font-size: 45px;
@@ -18,27 +25,21 @@
     text-align: center;
 }
 .cart h3 {
-    margin: 50px 0 5px;
+    margin: 50px 0 15px;
     font-size: 35px;
     line-height: 49px;
     font-family: 'Cinzel';
     font-weight: 400;
     text-align: center;
 }
-.cart h4 {
-    font-family: 'Cinzel';
-    font-weight: 400; 
-    font-size: 24px;    
-    width: 30%;
-    line-height: 24px;
-    color: #808285;
-}
+
 #cart-header {
     background-color: #faf5f0;
 
 }
-#cart-header  span ,#cart-header h4 {
+#cart-header  th  {
     font-weight: 500;
+    text-align: center;
     font-size: 24px;
     font-family: 'Cinzel';
     line-height: 30px;
@@ -47,13 +48,10 @@
 .cart-item {
     background-color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.096);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0.096); */
-    padding: 20px 0;
-
+    border-bottom: 1px solid rgba(0, 0, 0, 0.096) !important;
+    
 }
+
 .cart a {
     display: block;
     margin: 0 auto;
@@ -78,11 +76,13 @@
     transition: all 0.5s ;
 }
 
-.cart-item span {
+.cart-item td {
     font-size: 20px;
     font-family: 'Cinzel';
     font-weight: 400;   
     color: #808285;
+    padding: 10px 0;
+    text-align: center;
 }
 .cart-item button {
     padding: 5px 20px;
@@ -124,10 +124,130 @@ border-radius: 4px;
 }
 .back-arrow {
     position: absolute;
-    left: 25%;
+    left: 20%;
     color: #fff;
+    top: 30%;
     font-size: 24px;
 }
 .backtoproducts:hover {
     opacity: 0.9;
+}
+
+@media(max-width:1440px){
+    .cart h2 {
+        font-size: 38px;
+        line-height: 44px;
+    }
+    #cart-header th {
+        font-size: 20px;
+        line-height: 26px;
+    }
+    .cart-item td {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .cart h3 {
+        font-size: 28px;
+        line-height: 34px;
+    }
+    .backtoproducts {
+        padding: 15px 20px !important;
+    }
+    .back-arrow {
+        top: 25%;
+        left: 10%;
+        font-size: 22px;
+    }
+}
+
+@media (max-width:1024px){
+    .cart h2 {
+        font-size: 32px ;
+        line-height: 38px;
+    }
+    #cart-header th {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .cart-item td {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .cart-item input[type=number] {
+        width: 30px;
+        padding: 5px 10px;
+        font-size: 16px;
+    }
+    .cart-item button {
+        font-size: 18px;
+        padding: 5px 10px;
+    }
+    .cart a {
+        font-size: 16px;
+        line-height: 20px;
+        
+    }
+    .backtoproducts {
+        font-size: 18px;
+        line-height: 24px;
+        padding: 15px 15px !important;
+    }
+    .back-arrow {
+        left: 10%;
+        top:30%;
+        font-size: 18px;
+    }
+}
+@media (max-width:768px){
+    .cart h2 {
+        font-size: 28px;
+        line-height: 34px;
+    }
+    .cart-item td,#cart-header th  {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .cart-item input[type=number] {
+        width: 10px;
+        padding: 5px ;
+        font-size: 12px;
+    }
+    .cart-item button {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+    .cart {
+        padding: 0 40px;
+    }
+    .itemtotalprice {
+        display: none;
+    }
+    .cart a {
+        padding: 10px 15px;
+        font-size: 14px;
+    line-height: 20px;
+    }
+    .cart h3 {
+        font-size:18px ;
+        line-height: 26px;
+    }
+    .backtoproducts {
+        font-size: 14px;
+        padding: 5px 10px !important ;
+    }
+    .back-arrow {
+        left: 5%;
+        top: 25%;
+        font-size: 16px;
+    }
+}
+@media (max-width:486px){
+
+    .cart h2 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .back-arrow {
+        display: none;
+    }
 }
