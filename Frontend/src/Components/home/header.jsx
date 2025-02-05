@@ -65,7 +65,7 @@ const Header = () => {
             {isAuthenticated && (
               <li>
                 <NavLink
-                  to="/myorders"
+                  to="/orders"
                   className={({ isActive }) => (isActive ? "active" : "")}
                   onClick={() => setMobileNavOpen(false)}
                 >
