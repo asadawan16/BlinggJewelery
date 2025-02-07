@@ -43,7 +43,10 @@ const UpdateProducts = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (!productname || !productprice || !category || !description) {
+      alert("All fields are required");
+      return;
+    }
     const productData = new FormData();
     productData.append("productname", productname || "");
     productData.append("productprice", productprice || "");
