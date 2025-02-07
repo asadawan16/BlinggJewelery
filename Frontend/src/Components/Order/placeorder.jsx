@@ -20,7 +20,15 @@ const PlaceOrder = () => {
 
   const handleCheckout = async (e) => {
     e.preventDefault();
-
+    if (
+      name.length === 0 ||
+      email.length === 0 ||
+      contact.length === 0 ||
+      shippingaddress.length === 0
+    ) {
+      alert("Please fill all the details");
+      return;
+    }
     if (cartData.items.length === 0) {
       return navigate("/cart");
     }
